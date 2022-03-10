@@ -1,0 +1,17 @@
+{
+    "name": "kercode/mon-blog",
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "App\\": "app/",
+            "Database\\": "database"
+        }
+    },
+    "authors": [
+        {
+            "name": "Florent LE BOT",
+            "email": "florent.lebot.pro@gmail.com"
+        }
+    ],
+    "require": {}
+}
