@@ -12,7 +12,6 @@ abstract class Model
     protected $db;
     protected $table;
 
-
     public function __construct(DBConnection $db)
     {
         $this->db = $db;
@@ -21,7 +20,7 @@ abstract class Model
     public function allData(): array
     {
         // requete sql recupération des données dans la table posts rangé par la date de publication la plus récente
-        $statement = $this->db->getPDO()->query("SELECT title, content, created_at 
+        $statement = $this->db->getPDO()->query("SELECT id, title, content, created_at 
                                     FROM {$this->table} 
                                     ORDER BY created_at DESC");
         // mode de récupération pour cette requête (mode de récupération/nom de la classe/argument du constructeur)

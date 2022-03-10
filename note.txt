@@ -1,0 +1,14 @@
+.htaccess
+
+on active une réécriture
+on met une précondition (si on a un fichier on ne fait pas de redirection
+                         sinon ... )
+on crée une règle : je prends toute l'url et je la passe en tant que parametre d'url et je rajoute un drapeau QSA
+                    pour pouvoir passer plusieurs parametres et un drapeau L pour atteindre le dernier
+
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]

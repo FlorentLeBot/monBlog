@@ -2,7 +2,6 @@
 
 namespace Router;
 
-
 class Router
 {
     public $url;
@@ -10,9 +9,9 @@ class Router
 
     public function __construct($url)
     {
-        
+
         // retirer les slashs en début et fin d'url
-        $this->url = trim($url,'/');
+        $this->url = trim($url, '/');
     }
 
     public function getRoute(string $path, string $action)
@@ -23,13 +22,10 @@ class Router
 
     public function run()
     {
-
-
         // REQUEST_METHOD : Méthode de requête utilisée pour accéder à la page ; par exemple ' GET', ' HEAD', ' POST', ' PUT'.
         foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
 
             if ($route->matches($this->url)) {
-         
                 return $route->execute();
             }
         }

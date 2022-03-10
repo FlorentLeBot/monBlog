@@ -17,7 +17,7 @@ class BlogController extends Controller
         $post = new PostModel($this->getDB());
         // tous les posts
         $posts = $post->allData();
-
+        // je crée un tableau avec la fonction compact, second paramètre de la fonction view dans mon Controller (récupération de l'id)
         return $this->view("blog.index", compact('posts'));
     }
     public function show(int $id)

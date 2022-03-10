@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="/">Accuei</a>l</li>
                 <!-- <li><a href="/"></a>Blog</li> -->
-                <li><a href="/posts">Les derniers articles</a></li>
+                <li><a href="/monblog/posts">Les derniers articles</a></li>
             </ul>
         </nav>
     </header>

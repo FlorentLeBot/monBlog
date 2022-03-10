@@ -16,28 +16,25 @@ class Route
         $this->path = trim($path, '/');
         $this->action = $action;
     }
-
     public function matches(string $url)
     {
         // création d'un nouveau chemin
-        $path = preg_replace('#:([\w]+)#', '([¨^/]+)', $this->path);
+        // Rechercher et remplacer par une expression rationnelle standard
+        $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
         $pathToMatch = "#^$path$#";
-        // si il y a une correspondance avec l'expression régulière 
+        // si il y a une correspondance avec l'expression régulière
         if (preg_match($pathToMatch, $url, $matches)) {
             // retourne vrai
             $this->matches = $matches;
-            var_dump($this->matches);
             return true;
         } else {
             // sinon retourne faux
             return false;
         }
     }
+
     public function execute()
     {
-        // je scinde l'action (ex : BlogController&index) défini dans l'index.php 
-        // pour isoler la méthode défini dans le BlogController
-
         $params = explode('&', $this->action);
         //var_dump($params);
         // création d'une nouvelle instance de blogController 
