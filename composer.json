@@ -13,5 +13,7 @@
             "email": "florent.lebot.pro@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
 }

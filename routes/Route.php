@@ -2,6 +2,10 @@
 
 namespace Router;
 
+require("../vendor/autoload.php");
+
+
+use Dotenv\Dotenv;
 use Database\DBConnection;
 
 class Route
@@ -40,7 +44,11 @@ class Route
         // création d'une nouvelle instance de blogController 
         // TO DO variable d'environnement DB_NAME DB_HOST DB_USER DB_PWD
         // instanciation de la classe DB
-        $controller = new $params[0](new DBConnection('monapp', 'localhost', 'root', ''));
+
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
+
+        $controller = new $params[0](new DBConnection($_ENV["DB_NAME"], $_ENV["DB_HOST"] . ":" . $_ENV["DB_PORT"], $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]));
         //var_dump($controller);
         // la méthode isolée ci-dessus
         $method = $params[1];

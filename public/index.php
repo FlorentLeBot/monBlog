@@ -20,8 +20,8 @@ define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
 $router = new Router($_GET['url']);
 
 // BlogController & index / le controller et la méthode dans
-$router->getRoute('/posts/:id', 'App\Controllers\BlogController&show');
-$router->getRoute('/posts', 'App\Controllers\BlogController&index');
 $router->getRoute('/', 'App\Controllers\BlogController&welcome');
+$router->getRoute('/posts', 'App\Controllers\BlogController&index');
+$router->getRoute('/posts/:id', 'App\Controllers\BlogController&show');
 
 $router->run();
