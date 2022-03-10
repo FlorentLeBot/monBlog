@@ -16,5 +16,18 @@ a{
     width: 1200;
     margin: 0 auto;
 }
+#badge{
+    display: flex;
+}
+
+.badge{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 0 5px;
+}
 
 

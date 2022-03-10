@@ -12,7 +12,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/">Accuei</a>l</li>
+                <li><a href="/monblog">Accueil</a></li>
                 <!-- <li><a href="/"></a>Blog</li> -->
                 <li><a href="/monblog/posts">Les derniers articles</a></li>
             </ul>

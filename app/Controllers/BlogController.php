@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use App\Models\PostModel;
 
 class BlogController extends Controller

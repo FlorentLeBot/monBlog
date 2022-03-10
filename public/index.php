@@ -1,10 +1,6 @@
 <?php
 
-/*
-"Router\\": "routes/",
-"App\\": "app/",
-"Database\\": "database"
-*/
+
 
 use Router\Router;
 
