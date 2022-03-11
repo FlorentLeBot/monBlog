@@ -23,6 +23,7 @@ $router->getRoute('/tags/:id', 'App\Controllers\BlogController&tag');
 // administration
 
 $router->getRoute('/admin/posts', 'App\Controllers\AdminControllers\PostController&index');
+$router->getRoute('/admin/posts/delete/:id', 'App\Controllers\AdminControllers\PostController&delete');
 
 
 try {

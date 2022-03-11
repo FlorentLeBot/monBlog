@@ -16,7 +16,7 @@
                 <td><?= $post->getCreatedAt() ?></td>
                 <td>
                     <a href="#">Modifier</a>
-                    <a href="#">Supprimer</a>
+                    <a href="/monblog/admin/posts/delete/<?= $post->id ?>">Supprimer</a>
                 </td>
                 </div>
             <?php endforeach ?>

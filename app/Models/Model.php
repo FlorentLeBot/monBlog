@@ -22,6 +22,17 @@ abstract class Model
     {
         // si le paramètre est null c'est une query sinon un prepare
         $method = is_null($param) ? 'query' : 'prepare';
+        // strpos : chercher dans un chaîne de caractère
+        if (
+            strpos($sql, 'DELETE') === 0
+            || strpos($sql, 'UPDATE') === 0
+            || strpos($sql, 'CREATED') === 0
+        ) {
+            $statement = $this->db->getPDO()->$method($sql);
+            // récupération de la classe en cours
+            $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+            return $statement->execute([$param]);
+        }
         // si single est null alors on fait un fetchAll sinon un fetch
         $fetch = is_null($single) ? 'fetchAll' : 'fetch';
         $statement = $this->db->getPDO()->$method($sql);
@@ -49,5 +60,10 @@ abstract class Model
         return $this->query("SELECT * 
                             FROM {$this->table}
                             WHERE id = ?", $id, true);
+    }
+    public function delete(int $id): bool
+    {
+        return $this->query("DELETE FROM {$this->table}
+                            WHERE id = ?", $id);
     }
 }
