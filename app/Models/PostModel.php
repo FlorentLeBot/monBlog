@@ -13,7 +13,7 @@ class PostModel extends Model
         // création d'un nouvelle instance DateTime avec comme paramètre mes created_at 
         // retourne une chaîne de caractère
         // puis je la formate
-        return $date = (new DateTime($this->created_at))->format('d/m/Y à H:m');
+        return $date = (new DateTime($this->created_at))->format('d/m/Y à H:i');
     }
     public function getExcerpt(): string
     {

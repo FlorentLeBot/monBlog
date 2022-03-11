@@ -39,14 +39,14 @@ abstract class Model
     // fonction générique permettant la récupération de donnée de manière dynamique
     public function allData(): array
     {
-        return $this->query("SELECT id, title, content, created_at 
+        return $this->query("SELECT * 
                             FROM {$this->table} 
                             ORDER BY created_at DESC");
     }
     public function findById(int $id): Model
     {
         // requete preparée pour récupérer des données en fonction de l'id
-        return $this->query("SELECT id, title, content, created_at 
+        return $this->query("SELECT * 
                             FROM {$this->table}
                             WHERE id = ?", $id, true);
     }

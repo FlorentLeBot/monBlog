@@ -29,5 +29,27 @@ a{
     border: 1px solid black;
     margin: 0 5px;
 }
+table{width: 100%;}
+
+thead th{
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+}
+tbody th,
+tbody td{
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    
+    
+    
+}
+
+tbody div{
+    width: 100%;
+    display: flex;
+    
+} 
 
 

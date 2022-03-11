@@ -10,7 +10,7 @@
         <div id="badge">
             <!-- récupération des tags -->
             <?php foreach ($post->getTags() as $tag) : ?>
-                <span class="badge"><?= $tag->name ?></span>
+                <span class="badge"><a href="tags/<?= $tag->id ?>"><?= $tag->name ?></a></span>
             <?php endforeach ?>
         </div>
 
