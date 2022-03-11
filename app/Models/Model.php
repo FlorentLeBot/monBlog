@@ -18,7 +18,7 @@ abstract class Model
     }
 
     // fonction pour préparer ou non les requetes en fonction de $single
-    public function query(string $sql, int $param = null, bool $single = null)
+    public function query(string $sql, array $param = null, bool $single = null)
     {
         // si le paramètre est null c'est une query sinon un prepare
         $method = is_null($param) ? 'query' : 'prepare';
@@ -26,12 +26,12 @@ abstract class Model
         if (
             strpos($sql, 'DELETE') === 0
             || strpos($sql, 'UPDATE') === 0
-            || strpos($sql, 'CREATED') === 0
+            || strpos($sql, 'CREATE') === 0
         ) {
             $statement = $this->db->getPDO()->$method($sql);
             // récupération de la classe en cours
             $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
-            return $statement->execute([$param]);
+            return $statement->execute($param);
         }
         // si single est null alors on fait un fetchAll sinon un fetch
         $fetch = is_null($single) ? 'fetchAll' : 'fetch';
@@ -43,7 +43,7 @@ abstract class Model
             return $statement->$fetch();
         } else {
             // sinon on exécute la requête préparée puis on retourne un fetch
-            $statement->execute([$param]);
+            $statement->execute($param);
             return $statement->$fetch();
         }
     }
@@ -59,11 +59,29 @@ abstract class Model
         // requete preparée pour récupérer des données en fonction de l'id
         return $this->query("SELECT * 
                             FROM {$this->table}
-                            WHERE id = ?", $id, true);
+                            WHERE id = ?", [$id], true);
     }
     public function delete(int $id): bool
     {
         return $this->query("DELETE FROM {$this->table}
-                            WHERE id = ?", $id);
+                            WHERE id = ?", [$id]);
     }
+    public function update(int $id, array $data){
+
+        $sqlRequestPart = "";
+        $i = 1;
+
+        foreach ($data as $key => $value){
+            $comma = $i === count($data) ? ' ' : ', ';
+            $sqlRequestPart .= "{$key} = :{$key}{$comma}";
+            $i++;
+        }
+        // var_dump($sqlRequestPart); die;
+        $data['id'] = $id;
+
+        return $this->query("UPDATE {$this->table} SET {$sqlRequestPart} 
+                            WHERE id = :id", $data);
+
+    }
+   
 }

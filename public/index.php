@@ -23,7 +23,9 @@ $router->getRoute('/tags/:id', 'App\Controllers\BlogController&tag');
 // administration
 
 $router->getRoute('/admin/posts', 'App\Controllers\AdminControllers\PostController&index');
-$router->getRoute('/admin/posts/delete/:id', 'App\Controllers\AdminControllers\PostController&delete');
+$router->post('/admin/posts/delete/:id', 'App\Controllers\AdminControllers\PostController&delete');
+$router->getRoute('/admin/posts/edit/:id', 'App\Controllers\AdminControllers\PostController&edit');
+$router->post('/admin/posts/edit/:id', 'App\Controllers\AdminControllers\PostController&update');
 
 
 try {

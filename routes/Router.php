@@ -20,6 +20,11 @@ class Router
     {
         $this->routes['GET'][] = new Route($path, $action);
     }
+    
+    public function post(string $path, string $action)
+    {
+        $this->routes['POST'][] = new Route($path, $action);
+    }
 
     public function run()
     {
@@ -30,7 +35,8 @@ class Router
                 return $route->execute();
             }
         }
-         
-        throw new NotFoundException("La page demandée est introuvable");
+
+        throw new NotFoundException();
+        //"La page demandée est introuvable"
     }
 }
