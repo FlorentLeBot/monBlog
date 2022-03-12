@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <!-- feuille de syle css -->
     <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'style.css' ?>">
 </head>
+
 <body>
     <header>
         <nav>
@@ -15,6 +17,9 @@
                 <li><a href="/monblog">Accueil</a></li>
                 <!-- <li><a href="/"></a>Blog</li> -->
                 <li><a href="/monblog/posts">Les derniers articles</a></li>
+                <?php if (isset($_SESSION['authentication'])) : ?>
+                    <li><a href="/monblog/logout">Se déconnecter</a></li>
+                <?php endif ?>
             </ul>
         </nav>
     </header>

@@ -14,7 +14,7 @@ define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
 // création d'une nouvelle instance de Router
 $router = new Router($_GET['url']);
 
-// BlogController & index / le controller et la méthode dans
+// BlogController & index / le controller et la méthode 
 $router->getRoute('/', 'App\Controllers\BlogController&welcome');
 $router->getRoute('/posts', 'App\Controllers\BlogController&index');
 $router->getRoute('/posts/:id', 'App\Controllers\BlogController&show');
@@ -29,6 +29,9 @@ $router->post('/admin/posts/delete/:id', 'App\Controllers\AdminControllers\PostC
 $router->getRoute('/admin/posts/edit/:id', 'App\Controllers\AdminControllers\PostController&edit');
 $router->post('/admin/posts/edit/:id', 'App\Controllers\AdminControllers\PostController&update');
 
+$router->getRoute('/login', 'App\Controllers\UserController&login');
+$router->post('/login', 'App\Controllers\UserController&loginPost');
+$router->getRoute('/logout', 'App\Controllers\UserController&logout');
 
 try {
     $router->run();

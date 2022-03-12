@@ -11,6 +11,7 @@ class PostController extends Controller
 
     public function index()
     {
+        $this->isAdmin();
         $posts = (new PostModel($this->getDB()))->allData();
         //var_dump($post);
         //var_dump($this);
@@ -19,11 +20,13 @@ class PostController extends Controller
     
     public function create()
     {
+        $this->isAdmin();
         $tags = (new TagModel($this->getDB()))->allData();
         return $this->view('admin.post.form', compact('tags'));
     }
     public function createPost()
     {
+        $this->isAdmin();
         $post = new PostModel($this->getDB());
 
         $tags = array_pop($_POST);
@@ -35,6 +38,7 @@ class PostController extends Controller
     }
     public function delete(int $id)
     {
+        $this->isAdmin();
         $post = new PostModel($this->getDB());
         $result = $post->delete($id);
 
@@ -44,6 +48,7 @@ class PostController extends Controller
     }
     public function edit(int $id)
     {
+        $this->isAdmin();
         $post = (new PostModel($this->getDB()))->findById($id);
         $tags = (new TagModel($this->getDB()))->allData();
         return $this->view('admin.post.form', compact('post', 'tags'));
@@ -51,6 +56,7 @@ class PostController extends Controller
 
     public function update(int $id)
     {
+        $this->isAdmin();
         $post = new PostModel($this->getDB());
 
         $tags = array_pop($_POST);
