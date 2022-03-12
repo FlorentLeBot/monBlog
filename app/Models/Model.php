@@ -26,7 +26,7 @@ abstract class Model
         if (
             strpos($sql, 'DELETE') === 0
             || strpos($sql, 'UPDATE') === 0
-            || strpos($sql, 'CREATE') === 0
+            || strpos($sql, 'INSERT') === 0
         ) {
             $statement = $this->db->getPDO()->$method($sql);
             // récupération de la classe en cours
@@ -61,12 +61,31 @@ abstract class Model
                             FROM {$this->table}
                             WHERE id = ?", [$id], true);
     }
+    public function create(array $data, ?array $relations = null){
+        //"INSERT INTO posts (title, content) VALUES(:title, :content)";
+        // les parenthèses
+        $firstParenthesis = "";
+        $secondParenthesis = "";
+        $i = 1; 
+        
+        foreach($data as $key => $value){
+            // virgule
+            $comma = $i === count($data) ? "" : ", ";
+            $firstParenthesis .= "{$key}{$comma}";
+            $secondParenthesis .= ":{$key}{$comma}";
+            $i++;
+        }
+
+        //var_dump($firstParenthesis, $secondParenthesis); die();
+        return $this->query("INSERT INTO {$this->table}($firstParenthesis) 
+        VALUES ($secondParenthesis)", $data);
+    }
     public function delete(int $id): bool
     {
         return $this->query("DELETE FROM {$this->table}
                             WHERE id = ?", [$id]);
     }
-    public function update(int $id, array $data){
+    public function update(int $id, array $data, ?array $relations = null){
 
         $sqlRequestPart = "";
         $i = 1;

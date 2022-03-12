@@ -1,55 +1,40 @@
 /* mini reset css */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: palegoldenrod;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: palegoldenrod;
 }
 /* style commun à toutes les pages */
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
-.container{
-    width: 1200;
-    margin: 0 auto;
+.container {
+  width: 1200;
+  margin: 0 auto;
 }
-#badge{
-    display: flex;
+#badge {
+  display: flex;
 }
 
-.badge{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 30px;
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  margin: 0 5px;
+}
+
+th, td{
     border: 1px solid black;
-    margin: 0 5px;
-}
-table{width: 100%;}
-
-thead th{
-    width: 200px;
-    height: 30px;
-    border: 1px solid black;
-}
-tbody th,
-tbody td{
-    width: 200px;
-    height: 30px;
-    border: 1px solid black;
-    
-    
-    
-}
-
-tbody div{
-    width: 100%;
-    display: flex;
-    
-} 
-
-
+    padding: 10px;
+  }
+  caption{
+    background-color: #0AD;
+    font-weight: bold;
+  }

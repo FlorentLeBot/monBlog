@@ -1,5 +1,7 @@
 <h1>Administration des articles</h1>
 
+<a class="new-article-btn" href="/monblog/admin/posts/create">Création d'un nouvel article</a>
+
 <table>
     <thead>
         <th>ID</th>
@@ -10,8 +12,8 @@
     <tbody>
 
         <?php foreach ($params['posts'] as $post) : ?>
-            <div>
-                <th><?= $post->id ?></th>
+            <tr>
+                <td><?= $post->id ?></td>
                 <td><?= $post->title ?></td>
                 <td><?= $post->getCreatedAt() ?></td>
                 <td>
@@ -20,7 +22,7 @@
                         <button type="submit">Supprimer</button>
                     </form>
                 </td>
-            </div>
+            </tr>
         <?php endforeach ?>
 
     </tbody>

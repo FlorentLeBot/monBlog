@@ -5,12 +5,15 @@ namespace App\Models;
 
 class TagModel extends Model
 {
-    protected $table = 'tags';  
+    protected $table = 'tags';
 
-    public function getPosts(){
-        return $this->query("SELECT p.* FROM posts p
+    public function getPosts()
+    {
+        return $this->query(
+            "SELECT p.* FROM posts p
                             INNER JOIN post_tag pt ON pt.post_id = p.id
                             WHERE pt.tag_id = ?",
-                            [$this->id]);
+            [$this->id]
+        );
     }
 }
