@@ -6,4 +6,5 @@
     <?php endforeach ?>
 </div>
 <p><?= $params['post']->content ?></p>
+<img src="<?php $params['post']->image?>" alt="mon image">
 <a href="/monblog/posts">Revenir sur les derniers articles</a>

@@ -16,10 +16,12 @@
             <ul>
                 <li><a href="/monblog">Accueil</a></li>
                 <!-- <li><a href="/"></a>Blog</li> -->
-                <li><a href="/monblog/posts">Les derniers articles</a></li>
+                <li><a href="#">Jeux de société</a></li>
+                <li><a href="/monblog/posts">Blog</a></li>
                 <?php if (isset($_SESSION['authentication'])) : ?>
                     <li><a href="/monblog/logout">Se déconnecter</a></li>
                 <?php endif ?>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
